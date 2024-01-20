@@ -40,7 +40,7 @@ function Featured() {
                     <div className="homespan  items-evenly justify-between align-middle  flex-col-reverse  flex md:flex-row gap-4   w-full   ">
                         <div className="w-full md:w-[25%]  p-2 flex flex-col md:gap-10 gap-2 align-middle justify-center  ">
                             {" "}
-                            <span className="mb-2"> {`// featured`}</span>
+                            <span className="mb-2"> {`/ featured`}</span>
                             <h1 className="text-[24px] md:text-[40px] md:leading-[45px] mb-2">
                                 {data?.title?.slice(0, 100)}
                                 {data?.title?.length > 100 && " ..."}
