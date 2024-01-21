@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
-export const AdminRoute = ({ element }) => {
+export const AuthUserRoute = ({ element }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-const token = JSON.parse(localStorage.getItem("profile"))?.token;
+    const token = JSON.parse(localStorage.getItem("profile"))?.token;
     useEffect(() => {
         const fetchUser = async () => {
             try {
                 const response = await axios.get(
-                    `${process.env.REACT_APP_API_ENDPOINT}/auth/adminuser`,
+                    `${process.env.REACT_APP_API_ENDPOINT}/auth/user`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -45,9 +45,8 @@ const token = JSON.parse(localStorage.getItem("profile"))?.token;
         return <Navigate to="/login" replace />;
     }
 
-    const adminUser = user?.isAdmin;
-console.log("token",token)
-    if (adminUser) {
+    console.log("userssss", user);
+    if (user) {
         return element;
     } else {
         return <Navigate to="/" replace />;

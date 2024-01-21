@@ -222,65 +222,45 @@ console.log("user",user)
                                 TLDR
                             </h6>
                         </Link>
-                        <div className="flex gap-4    items-center align-middle justify-center mx-auto">
-                            {" "}
-                            <a href="https://www.byxcalibur.xyz">
-                                {" "}
-                                <img
-                                    src={discord}
-                                    alt="discord"
-                                    // className="w-[20px] xl:w-[30px]"
-                                />
-                            </a>
-                            <a
-                                // className="w-[20px] xl:w-[30px]"
-                                href="https://twitter.com/ByXcalibur"
-                                target="blank"
-                            >
-                                {" "}
-                                <img src={twitter} alt="twitter" />
-                            </a>
-                            <a
-                                // className="w-[20px] xl:w-[30px]"
-                                href="https://www.instagram.com/byxcalibur/"
-                                target="blank"
-                            >
-                                <img src={instagram} alt="instagram" />
-                            </a>{" "}
-                            {/* <a href="">
-                                {" "}
-                                <img src={tiktok} alt="tiktok" />
-                            </a> */}
-                        </div>
+
                         <div className="dropdown ">
                             {
-                                user && (
+                                user ? (
                                     <h6 className="text-white text-[8px] xl:text-[18px]">
                                         {user?.email?.includes("@")
                                             ? user.email.split("@")[0]
                                             : user.email}
                                     </h6>
                                 )
-                                //   : (
-                                //        <Link to="/login">
-                                //           <h6 className="text-white text-[12px] lg:text-[18px]">
-
-                                //         </h6>
-                                //</Link>
-                                //  )
+                                   : (
+                                        <Link to="/login">
+                                           <h6 className="text-white text-[12px] lg:text-[18px]">
+LOGIN
+                                         </h6>
+                                </Link>
+                                  )
                             }
-                            {user &&  (
+                   
+                            {user && (
                                 <div class="dropdown-content">
-                                  {user.isAdmin &&
-                                    <Link
-                                        to="/admin/posts"
-                                        className="hover:text-black"
-                                    >
-                                        <h6 className="hover:text-black">
-                                            ADMIN
+                                    {user.isAdmin && (
+                                        <Link
+                                            to="/admin/posts"
+                                            className="hover:text-black"
+                                        >
+                                            <h6 className="hover:text-black">
+                                                ADMIN
+                                            </h6>
+                                        </Link>
+                                    )}
+                                    <Link to="/profile" className="hover:text-black">
+                                        <h6
+                                   
+                                            className="cursor-pointer text-white hover:text-black "
+                                        >
+                                            PROFILE
                                         </h6>
                                     </Link>
-                                     }
                                     <Link to="/" className="hover:text-black">
                                         <h6
                                             onClick={logoutUser}

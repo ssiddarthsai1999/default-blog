@@ -39,6 +39,9 @@ import Analysis from "./Pages/Analysis/Analysis";
 import Tldr from "./Pages/Tldr/Tldr";
 import Register from "./Pages/Auth/Register";
 import VerifyEmail from "./Pages/Auth/VerifyEmail";
+import Profile from "./Pages/Profile/Profile";
+import { AuthUserRoute } from "./Middleware/AuthUserRoute";
+import ResetPassword from "./Pages/Auth/ResetPassword";
 function App() {
     const dispatch = useDispatch();
 
@@ -101,6 +104,11 @@ function App() {
                             path="/verifyEmail/:token"
                             element={<VerifyEmail />}
                         />
+
+                        <Route
+                            path="/reset-password/:resetToken"
+                            element={<ResetPassword />}
+                        />
                         {/*Posts......................*/}
                         <Route
                             element={<AllPosts />}
@@ -110,6 +118,11 @@ function App() {
                         {/*Analysis and tldr......................*/}
                         <Route element={<Analysis />} path="/deck" />
                         <Route element={<Tldr />} path="/tldr" />
+                        {/*Profile......................*/}
+                        <Route
+                            element={<AuthUserRoute element={<Profile />} />}
+                            path="/profile"
+                        />
                     </Route>
 
                     {/*Admin route......................*/}
