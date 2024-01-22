@@ -35,13 +35,17 @@ function CommentsCard({
                     },
                 }
             );
-            setFetchedData((prevData) => [...prevData, response.data.comment]);
+     setFetchedData((prevData) => ({
+         ...prevData,
+         comments: [...prevData.comments, response.data.comment],
+     }));
+
             setContent("");
         } catch (error) {
             console.log(error);
         }
     };
-
+console.log("fetchedData", fetchedData);
     const deleteComment = async (commentId) => {
         try {
             const profileData = JSON.parse(localStorage.getItem("profile"));
@@ -58,9 +62,10 @@ function CommentsCard({
             );
 
             // Update your state to remove the deleted comment
-            setFetchedData((prevData) =>
-                prevData.filter((x) => x.id !== commentId)
-            );
+             setFetchedData((prevData) => ({
+                 ...prevData,
+                 comments: [...prevData.comments.filter((x)=>x.id!==commentId)],
+             }));
             toast.success("Comment deleted successfully!", {
                 position: "bottom-center",
                 autoClose: 2000,
